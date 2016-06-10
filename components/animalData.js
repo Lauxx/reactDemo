@@ -11,10 +11,10 @@ var AnimalData = React.createClass({
 
 		return (
 			<div>	
-				<h3> My name is {this.props.name } </h3>
-				<h4> My colors are {this.props.color}</h4>
-				<h4> My species is {this.props.species}</h4>
-				<h4> My age is {this.props.age}</h4>
+				<h3> My name is: {this.props.name } </h3>
+				<h4> My colors are: {this.props.color}</h4>
+				<h4> My common species name is: {this.props.species}</h4>
+				<h4> My age is: {this.props.age}</h4>
 			</div>
 			)
 	}

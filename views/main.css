@@ -1,8 +1,6 @@
 .theTitle{
 	color: turquoise;
-	font: 'Didot';
+	font-family: 'Didot';
 	list-style-type: none;
 }
-#something{
-	color: red;
-}
+

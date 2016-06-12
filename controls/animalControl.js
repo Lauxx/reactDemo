@@ -23,6 +23,16 @@ module.exports = {
 				res.send(result)
 			}
 		});
+	},
+
+	delete: function(req, res, next){
+		AnimalModel.findByIdAndRemove(req.params.id, req.body, function(err, result){
+			if(err){
+				res.send(err)
+			} else {
+				res.send(result)
+			}
+		})
 	}
 
 };

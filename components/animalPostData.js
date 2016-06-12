@@ -1,7 +1,16 @@
+// AnimalApp
+//	  AnimalPostData
+//		 AnimalPostForm	
+// 	  Animals
+
 var React = require('react');
 var AnimalPostForm = require('./animalPostFrom');
 
 var AnimalPostData = React.createClass({
+	propTypes: function() {
+		toggleActiveComponent: React.PropTypes.func.isRequired
+	},
+
 	getInitialState: function(){
 		return {
 			name: null, 
@@ -12,7 +21,7 @@ var AnimalPostData = React.createClass({
 	},
 
 	handleNameChange: function(e){
-		this.setState({ name: e.target.value })
+		this.setState({ name: e.target.value });
 	},
 
 	handleSpeciesChange: function(e){
@@ -27,30 +36,39 @@ var AnimalPostData = React.createClass({
 		this.setState({ age: e.target.value })
 	},
 
+
 	handleAnimalSubmit: function(e){
+		
 		e.preventDefault();
 
-		var animal = {};
+		var animal={};
 		animal.name = this.state.name;
 		animal.species = this.state.species; 
 		animal.color = this.state.color;
 		animal.age = this.state.age;
 
+
+		if(!animal.name && !animal.species && !animal.color && !animal.age){
+			return;
+		} else {
 		this.handleNewAnimalPost(animal);
-		this.setState({ name: '', species: '', color: '', age: '' })
+		this.setState({ name: '', species: '', color: '', age: ''});
+		}
 	},
 
 	handleNewAnimalPost: function(animal){
+		var self = this;
 		$.ajax({
 			url: '/animals', 
 			method: 'POST',
+			dataType: 'json',
 			data: animal,
 			success: function(data){
-			this.props.getAllAnimalsFromServer();
-			}.bind(this),
+			self.props.toggleActiveComponent('allAnimals');
+			}.bind(self),
 			error: function(xhr, status, err){
 				console.error('/animals', status, err.toString())
-			}.bind(this)	
+			}.bind(self)	
 		})
 	}, 
 

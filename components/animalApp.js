@@ -1,53 +1,55 @@
 // AnimalApp
+//	  AnimalPostData
+//		 AnimalPostForm	
 // 	  Animals
-// 		AnimalData
 
 var React = require('react');
-var Animals = require('./animals');
 var AnimalPostData = require('./animalPostData');
+var AllAnimalsData = require('./allAnimalsData.js');
+var Toggler = require('./toggle.js');
 
 var AnimalApp = React.createClass({
 	getInitialState: function(){
 		return {
-			animals: []
+			activeComponent: 'allAnimals',
+			activeAnimalId: null
 		}
 	},
 
-	getAllAnimalsFromServer: function(){
-		var self = this;
-		$.ajax({
-			method: 'GET',
-			url: '/animals'
-		}).done(function(data){
-			console.log(data);
-			self.setState({ animals: data })
-		})
+	getId: function(component, id){
+		if(component === "showOneAnimal"){
+			return this.setState({ activeAnimalId: id, component: 'oneAnimal'})
+		} else if(component === "editOneAnimal"){
+			return this.setState({ activeAnimalId: id, component: 'editAnimal'})
+		} else {
+			return null;
+		}
 	},
 
-	componentDidMount: function(){
-		this.getAllAnimalsFromServer();
+	showComponent: function(){
+		if(this.state.activeComponent === 'postAnimalForm'){
+			return <AnimalPostData toggleActiveComponent={this.toggleActiveComponent}/>
+		} else if(this.state.activeComponent === "allAnimals"){
+			return <AllAnimalsData 	/>
+		} else {
+			throw new Error('No active component', this.state.activeComponent) 
+		}
+	},
+
+	toggleActiveComponent: function(name){
+		this.setState({ activeComponent: name })
 	},
 
 	render: function(){
-		var animalArr = this.state.animals.map(function(item){
-			return <Animals   name={ item.name } 
-							  species={ item.species }
-							  color={ item.color } 
-							  age={ item.age } 
-							  key={ item._id }
-							  id={ item._id }
-							  />
-		});
 
 		return (
 			<div>
-				{ animalArr }
-				<div>	
-					<AnimalPostData getAllAnimalsFromServer={this.getAllAnimalsFromServer}/>
-				</div>	
+				<Toggler toggleActiveComponent={ this.toggleActiveComponent } />	
+				{ this.showComponent() }	
 			</div>
 			)
-	}
+		}
 });
+
 
 module.exports = AnimalApp;

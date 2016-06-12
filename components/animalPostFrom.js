@@ -1,3 +1,10 @@
+// AnimalApp
+//	  AnimalPostData
+//		 AnimalPostForm	
+// 	  Animals
+
+
+
 var React = require('react');
 
 var AnimalPostForm = React.createClass({
@@ -5,9 +12,9 @@ var AnimalPostForm = React.createClass({
 		return (
 		<div>	
 			<div className="container forms">
-				<form className="form-inline" onSubmit={this.props.handleAnimalSubmit}>
+				<form className="form-inline" onSubmit={this.props.handleAnimalSubmit} >
 					<div className="form-group">
-						<label for="exampleInputName2">Name</label>
+						<label >Name</label>
 						<input type="text" className="form-control" value={this.props.name} onChange={this.props.handleNameChange} placeholder="Name"/>
 					</div>
 					<div className="form-group">
@@ -22,7 +29,7 @@ var AnimalPostForm = React.createClass({
 						<label>Age</label>
 						<input className="form-control" value={this.props.age} onChange={this.props.handleAgeChange} placeholder="Age"/>
 					</div>
-					<button type="submit" className="btn btn-primary">Post Animal</button>
+					<button type="submit"  className="btn btn-primary">Post Animal</button>
 				</form>
 			</div>
 		</div>	
@@ -31,3 +38,6 @@ var AnimalPostForm = React.createClass({
 });
 
 module.exports = AnimalPostForm;
+
+
+

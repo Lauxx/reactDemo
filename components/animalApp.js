@@ -30,7 +30,7 @@ var AnimalApp = React.createClass({
 		if(this.state.activeComponent === 'postAnimalForm'){
 			return <AnimalPostData toggleActiveComponent={this.toggleActiveComponent}/>
 		} else if(this.state.activeComponent === "allAnimals"){
-			return <AllAnimalsData 	/>
+			return <AllAnimalsData 	getId={ this.getId }/>
 		} else {
 			throw new Error('No active component', this.state.activeComponent) 
 		}

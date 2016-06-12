@@ -1,16 +1,17 @@
 var React = require('react');
 var AnimalCard = require('./animalCard.js');
 
-var AllAnimals = React.createClass({
-	render: function(){
 
-		var animal = this.props.animals.map(function(item){
+function AllAnimals(props){
+	var animal = props.animals.map(function(item){
 			return <AnimalCard key={item._id}
 							   id={item._id}
 							   name={item.name}
 							   color={item.color}
 							   age={item.age}
-							   species={item.species} />
+							   species={item.species} 
+							   getId={ props.getId }
+							   deleteAnimal={ props.deleteAnimal }/>
 		});
 
 		return (
@@ -18,7 +19,7 @@ var AllAnimals = React.createClass({
 				{animal}
 			</div>
 			)
-	}
-});
+
+};
 
 module.exports = AllAnimals;

@@ -11,8 +11,8 @@ var AnimalPostForm = React.createClass({
 	render: function(){
 		return (
 		<div>	
-			<div className="container forms">
-				<form className="form-inline" onSubmit={this.props.handleAnimalSubmit} >
+			<div className="container forms col-xs-6 col-xs-offset-2">
+				<form className="well" onSubmit={this.props.handleAnimalSubmit} >
 					<div className="form-group">
 						<label >Name</label>
 						<input type="text" className="form-control" value={this.props.name} onChange={this.props.handleNameChange} placeholder="Name"/>

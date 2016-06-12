@@ -8,6 +8,16 @@ var AllAnimalsData = React.createClass({
 		}
 	},
 
+	deleteAnimalFromServer: function(id){
+		var self = this;
+		$.ajax({
+			url: '/animals/' + id, 
+			method: 'DELETE'
+		}).done(function(){
+			self.getAllAnimalsFromServer();
+		})
+	},
+
 	getAllAnimalsFromServer: function(){
 		var self = this;
 		$.ajax({
@@ -25,7 +35,10 @@ var AllAnimalsData = React.createClass({
 	render: function(){
 		return (
 			<div>
-				<AllAnimals animals={ this.state.animals } />
+				<AllAnimals 
+				animals={ this.state.animals } 
+				getId={ this.props.getId }
+				deleteAnimal= { this.deleteAnimalFromServer }/>
 			</div>
 			)
 	}

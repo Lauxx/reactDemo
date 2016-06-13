@@ -17,7 +17,9 @@ var animalControl = require('./controls/animalControl.js');
 
 app.post('/animals', animalControl.create);
 app.get('/animals', animalControl.read);
+app.get('/animals/:id', animalControl.readById);
 app.delete('/animals/:id', animalControl.delete);
+app.put('/animals/:id', animalControl.update);
 
 
 if (process.env.NODE_ENV === 'production') {

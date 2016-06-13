@@ -11,7 +11,8 @@ function AllAnimals(props){
 							   age={item.age}
 							   species={item.species} 
 							   getId={ props.getId }
-							   deleteAnimal={ props.deleteAnimal }/>
+							   deleteAnimal={ props.deleteAnimal }
+							   toggleActiveComponent={props.toggleActiveComponent}/>
 		});
 
 		return (
@@ -21,5 +22,6 @@ function AllAnimals(props){
 			)
 
 };
+
 
 module.exports = AllAnimals;

@@ -6,6 +6,8 @@
 var React = require('react');
 var AnimalPostData = require('./animalPostData');
 var AllAnimalsData = require('./allAnimalsData.js');
+var EditAnimalData = require('./editAnimalData.js');
+//var SingleAnimalData = require('./singleAnimalData.js');
 var Toggler = require('./toggle.js');
 
 var AnimalApp = React.createClass({
@@ -17,20 +19,21 @@ var AnimalApp = React.createClass({
 	},
 
 	getId: function(component, id){
-		if(component === "showOneAnimal"){
-			return this.setState({ activeAnimalId: id, component: 'oneAnimal'})
-		} else if(component === "editOneAnimal"){
-			return this.setState({ activeAnimalId: id, component: 'editAnimal'})
+		if(component === "editOneAnimal"){
+			return this.setState({ activeAnimalId: id, activeComponent: 'editAnimal'})
 		} else {
 			return null;
 		}
 	},
 
 	showComponent: function(){
-		if(this.state.activeComponent === 'postAnimalForm'){
-			return <AnimalPostData toggleActiveComponent={this.toggleActiveComponent}/>
-		} else if(this.state.activeComponent === "allAnimals"){
-			return <AllAnimalsData 	getId={ this.getId }/>
+		console.log(this.state.activeAnimalId);
+		if(this.state.activeComponent ===  "allAnimals"){
+			 return <AllAnimalsData getId={ this.getId } />
+		} else if(this.state.activeComponent === 'postAnimalForm' ){
+			return <AnimalPostData toggleActiveComponent={ this.toggleActiveComponent }/>
+		} else if(this.state.activeComponent === "editAnimal"){
+			return <EditAnimalData id={ this.state.activeAnimalId } toggleActiveComponent={this.toggleActiveComponent}/>
 		} else {
 			throw new Error('No active component', this.state.activeComponent) 
 		}

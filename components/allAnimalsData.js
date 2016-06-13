@@ -33,14 +33,7 @@ var AllAnimalsData = React.createClass({
 	},
 
 	render: function(){
-		return (
-			<div>
-				<AllAnimals 
-				animals={ this.state.animals } 
-				getId={ this.props.getId }
-				deleteAnimal= { this.deleteAnimalFromServer }/>
-			</div>
-			)
+		return this.state.animals ? <AllAnimals animals={ this.state.animals } getId={ this.props.getId } deleteAnimal= { this.deleteAnimalFromServer }/> : null;
 	}
 });
 

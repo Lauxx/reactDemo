@@ -1,9 +1,11 @@
 // AnimalApp
-//	  AnimalPostData
-//		 AnimalPostForm	
-// 	  Animals
+//	  AllAnimalsData
+//        AllAnimals
+//			 AnimalCard  
 
 var React = require('react');
+
+
 var AnimalPostData = require('./animalPostData');
 var AllAnimalsData = require('./allAnimalsData.js');
 var EditAnimalData = require('./editAnimalData.js');
@@ -11,6 +13,7 @@ var EditAnimalData = require('./editAnimalData.js');
 var Toggler = require('./toggle.js');
 
 var AnimalApp = React.createClass({
+
 	getInitialState: function(){
 		return {
 			activeComponent: 'allAnimals',

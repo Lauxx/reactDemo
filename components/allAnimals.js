@@ -3,6 +3,7 @@ var AnimalCard = require('./animalCard.js');
 
 
 function AllAnimals(props){
+	
 	var animal = props.animals.map(function(item){
 			return <AnimalCard key={item._id}
 							   id={item._id}
@@ -12,7 +13,7 @@ function AllAnimals(props){
 							   species={item.species} 
 							   getId={ props.getId }
 							   deleteAnimal={ props.deleteAnimal }
-							   toggleActiveComponent={props.toggleActiveComponent}/>
+							   />
 		});
 
 		return (

@@ -52,7 +52,7 @@ module.exports = {
 			} else {
 				res.send(result)
 			}
-		})
+		});
 	}
 
 };

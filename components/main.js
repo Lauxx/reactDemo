@@ -1,6 +1,7 @@
 var React = require('react');
 var Link = require('react-router').Link;
 
+
 var Main = React.createClass({
 	render: function(){
 		return (
@@ -19,6 +20,7 @@ var Main = React.createClass({
 					<Link to="animals">
 						<button className="btn btn-success">Animals</button>
 					</Link>	
+					
 					{this.props.children}
 				</div>	
 			</div>

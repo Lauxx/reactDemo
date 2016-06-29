@@ -20,6 +20,8 @@ app.get('/animals', animalControl.read);
 app.get('/animals/:id', animalControl.readById);
 app.delete('/animals/:id', animalControl.delete);
 app.put('/animals/:id', animalControl.update);
+app.post('/geolocation', animalControl.createLocation);
+app.get('/geolocation', animalControl.readLocation);
 
 
 if (process.env.NODE_ENV === 'production') {
